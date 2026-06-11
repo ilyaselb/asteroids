@@ -14,6 +14,10 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    background = pygame.transform.scale(
+        pygame.image.load("space_background.jpg").convert(),
+        (SCREEN_WIDTH, SCREEN_HEIGHT),
+    )
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -35,7 +39,7 @@ def main():
 
         dt = clock.tick(60) / 1000
 
-        screen.fill("black")
+        screen.blit(background, (0, 0))
         updatable.update(dt)
 
         for asteroid in asteroids:
